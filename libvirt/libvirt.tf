@@ -16,17 +16,15 @@ resource "random_shuffle" "worker" {
 resource "libvirt_volume" "master_ubuntu18" {
   name = "${var.k8s_masters[count.index].name}.qcow2"
   count = length(var.k8s_masters)
-  source = "file:///var/lib/libvirt/images/ubuntu18.04-template"
-  pool = "default"
-  format = "qcow2"
+  base_volume_pool = "default"
+  base_volume_name = "ubuntu18.04-template"
 }
 
 resource "libvirt_volume" "worker_ubuntu18" {
   name = "${var.k8s_workers[count.index].name}.qcow2"
   count = length(var.k8s_workers)
-  source = "file:///var/lib/libvirt/images/ubuntu18.04-template"
-  pool = "default"
-  format = "qcow2"
+  base_volume_pool = "default"
+  base_volume_name = "ubuntu18.04-template"
 }
 
 resource "libvirt_domain" "k8s_master_vms" {
