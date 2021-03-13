@@ -1,19 +1,10 @@
-variable "k8s_masters" {
+variable "k8s_nodes" {
 
-  description="Create master k8s nodes"
+  description="Create k8s nodes"
   type=list(object({
     name = string
     ip = string
-  }))
-  default = []
-}
-
-variable "k8s_workers" {
-
-  description="Create worker k8s nodes"
-  type=list(object({
-    name = string
-    ip = string
+    master = bool
   }))
   default = []
 }
@@ -52,3 +43,24 @@ variable "nameserver" {
   description = "nameserver address"
   type = string
 }
+
+variable "master_cpu" {
+  description = "master cpu count"
+  type = number
+}
+
+variable "master_memory" {
+  description = "master memory"
+  type = number
+}
+
+variable "worker_cpu" {
+  description = "worker cpu count"
+  type = number
+}
+
+variable "worker_memory" {
+  description = "worker memory"
+  type = number
+}
+
