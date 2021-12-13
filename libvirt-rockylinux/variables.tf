@@ -58,5 +58,5 @@ variable "memory" {
 variable "extra_disk" {
   description = "size of extra disk(s)"
   type = number
-  default = 5368709120
+  default = 53687091200
 }
