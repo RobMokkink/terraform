@@ -1,4 +1,4 @@
-ubuntu_img = "ubuntu-18.04-server-cloudimg-amd64.img"
+ubuntu_img = "bionic-server-cloudimg-amd64.img"
 netmask = 16
 dnsdomain = "lab.local"
 gateway = "10.0.0.1"
