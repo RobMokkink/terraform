@@ -9,13 +9,6 @@ resource "libvirt_volume" "rocky" {
   base_volume_name = var.rocky_img
 }
 
-resource "libvirt_volume" "rocky2" {
-  name = "${var.rocky_nodes[count.index].name}2.qcow2"
-  count = length(var.rocky_nodes)
-  pool = var.libvirt_pool
-  size = var.extra_disk
-}
-
 resource "libvirt_cloudinit_disk" "commoninit" {
   count = length(var.rocky_nodes)
   name = "${var.rocky_nodes[count.index].name}-commoninit.iso"
@@ -52,9 +45,6 @@ resource "libvirt_domain" "rocky_nodes" {
   memory = var.memory
   disk {
     volume_id = libvirt_volume.rocky[count.index].id
-  }
-  disk {
-    volume_id = libvirt_volume.rocky2[count.index].id
   }
   cloudinit = libvirt_cloudinit_disk.commoninit[count.index].id
   network_interface {

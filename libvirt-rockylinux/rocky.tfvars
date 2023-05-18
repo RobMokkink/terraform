@@ -7,7 +7,15 @@ libvirt_net = "lab"
 libvirt_pool = "default"
 rocky_nodes = [
     {
-      name = "nfs"
-      ip = "10.0.0.103"
+      name = "servera"
+      ip = "10.0.0.100"
+    },
+    {
+      name = "serverb"
+      ip = "10.0.0.101"
+    },
+    {
+      name = "serverc"
+      ip = "10.0.0.102"
     }
   ]

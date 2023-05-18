@@ -50,4 +50,5 @@ resource "libvirt_domain" "k8s_nodes" {
   network_interface {
     network_name = var.libvirt_net
   }
+
 }
